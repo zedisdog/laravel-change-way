@@ -1,6 +1,7 @@
 # laravel-change-way
 
 [![License](http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-1.png)](LICENSE)
+[![Build Status](https://www.travis-ci.org/zedisdog/laravel-change-way.svg?branch=master)](https://www.travis-ci.org/zedisdog/laravel-change-way)
 
 change the dispatched controller by header.
 
