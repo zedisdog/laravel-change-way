@@ -10,9 +10,7 @@ declare(strict_types=1);
 namespace Dezsidog;
 
 
-use Dezsidog\Http\Middleware\RequestParse;
 use Dezsidog\Routing\Router;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
 class DispatcherServiceProvider extends ServiceProvider
@@ -35,13 +33,6 @@ class DispatcherServiceProvider extends ServiceProvider
     {
         $this->app->singleton('router', function ($app) {
             return new Router($app['events'], $app);
-        });
-
-        $this->app->singleton(RequestParse::class, function($app){
-            /**
-             * @var Application $app
-             */
-            return new RequestParse($app, $app->make('api.router'));
         });
     }
 }
