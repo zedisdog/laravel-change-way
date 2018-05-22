@@ -33,6 +33,18 @@ class Kernel extends LaravelHttpKernel
              */
             $this->app->instance('request', $request);
 
+            $oldRouter = $this->router;
+
+            $this->router = $this->app->make('router');
+
+            foreach ($oldRouter->getMiddlewareGroups() as $key => $value) {
+                $this->router->middlewareGroup($key, $value);
+            }
+
+            foreach ($oldRouter->getMiddleware() as $key => $value) {
+                $this->router->aliasMiddleware($key, $value);
+            }
+
             return $this->router->dispatchByVersion($request, $request->header('version', 'v1'));
         };
     }
